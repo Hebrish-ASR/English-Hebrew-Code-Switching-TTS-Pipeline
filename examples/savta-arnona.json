@@ -1,0 +1,62 @@
+{
+  "text": "My savta says the arnona went up again, so I called the iriya.",
+  "spans": [
+    {
+      "start": 3,
+      "end": 8,
+      "surface": "savta",
+      "score": 1.0,
+      "hebrew": "סַוְטָה",
+      "source": "taatiknet",
+      "pointed": "סַוְטָה"
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "surface": "arnona",
+      "score": 0.996,
+      "hebrew": "ארנונה",
+      "source": "lexicon",
+      "pointed": "אַרְנוֹנָה"
+    },
+    {
+      "start": 56,
+      "end": 61,
+      "surface": "iriya",
+      "score": 0.998,
+      "hebrew": "אִירִיָּה",
+      "source": "taatiknet",
+      "pointed": "אִירִיָּה"
+    }
+  ],
+  "segments": [
+    {
+      "text": "My ",
+      "lang": "en"
+    },
+    {
+      "text": "סַוְטָה",
+      "lang": "he"
+    },
+    {
+      "text": " says the ",
+      "lang": "en"
+    },
+    {
+      "text": "אַרְנוֹנָה",
+      "lang": "he"
+    },
+    {
+      "text": " went up again, so I called the ",
+      "lang": "en"
+    },
+    {
+      "text": "אִירִיָּה",
+      "lang": "he"
+    },
+    {
+      "text": ".",
+      "lang": "en"
+    }
+  ]
+}

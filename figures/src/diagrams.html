@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pipeline diagrams</title>
+<!--
+  Source of figures/pipeline.png and figures/compare.png. Exact text (the generated hero image
+  carries no Hebrew on purpose: image models misspell it). Render from the repo root:
+    google-chrome --headless=new --hide-scrollbars --window-size=1600,540 --screenshot=figures/pipeline.png "file://$PWD/figures/src/diagrams.html#pipeline"
+    google-chrome --headless=new --hide-scrollbars --window-size=1600,520 --screenshot=figures/compare.png "file://$PWD/figures/src/diagrams.html#compare"
+  The hash picks the figure. Written 2026-10-20.
+-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Frank+Ruhl+Libre:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+  :root { --bg:#fbf8f2; --surface:#fff; --band:#f1ece1; --ink:#1d2422; --muted:#5b6662; --line:#e2dccf; --accent:#0f6b5c; --soft:#d8efe7; --gold:#c8901c; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.4 Inter, sans-serif; }
+  .fig { display:none; padding:40px 48px; }
+  .fig.on { display:block; }
+  h1 { font:700 34px Fraunces, serif; margin:0 0 6px; }
+  .sub { color:var(--muted); margin:0 0 28px; font-size:17px; }
+  .row { display:grid; grid-template-columns:repeat(6, 1fr); gap:18px; align-items:stretch; }
+  .st { position:relative; background:var(--surface); border:1.5px solid var(--line); border-radius:16px; padding:16px 16px 14px; display:flex; flex-direction:column; gap:8px; }
+  .st + .st::before { content:"→"; position:absolute; left:-17px; top:44%; color:var(--accent); font-size:22px; font-weight:600; }
+  .st.key { border-color:var(--accent); box-shadow:0 0 0 4px var(--soft); }
+  .st.out { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .n { font:600 12px Inter; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  .out .n { color:#cfe7e0; }
+  .name { font:600 18px Fraunces, serif; line-height:1.2; }
+  .what { font-size:13.5px; color:var(--muted); }
+  .out .what { color:#e3f2ee; }
+  .io { margin-top:auto; background:var(--band); border-radius:10px; padding:10px; font:13px/1.55 "JetBrains Mono", monospace; }
+  .out .io { background:rgba(255,255,255,.12); color:#fff; }
+  mark { background:var(--soft); color:var(--accent); font-weight:600; border-radius:4px; padding:0 2px; }
+  .he { font-family:"Frank Ruhl Libre", serif; font-size:19px; font-weight:500; unicode-bidi:isolate; }
+  .tag { display:inline-block; font:600 11px Inter; padding:1px 7px; border-radius:99px; background:var(--soft); color:var(--accent); }
+  .tag.en { background:#f3ead6; color:#7a5a12; }
+  .status { margin-top:6px; font:600 11px Inter; letter-spacing:.04em; text-transform:uppercase; }
+  .s-built { color:var(--accent); } .s-exists { color:var(--gold); } .s-code { color:var(--muted); }
+  .out .status { color:#cfe7e0; }
+  .legend { margin-top:22px; color:var(--muted); font-size:14px; }
+  /* compare */
+  .cols { display:grid; grid-template-columns:1fr 1fr; gap:36px; }
+  .col { background:var(--surface); border:1.5px solid var(--line); border-radius:18px; padding:22px 24px; }
+  .col.good { border-color:var(--accent); box-shadow:0 0 0 4px var(--soft); }
+  .col h2 { font:600 22px Fraunces, serif; margin:0 0 14px; }
+  .segs { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; }
+  .seg { border-radius:10px; padding:8px 10px; background:#f3ead6; font:14px "JetBrains Mono", monospace; display:flex; flex-direction:column; gap:4px; }
+  .seg.h { background:var(--soft); }
+  .seg small { font:600 11px Inter; color:var(--muted); }
+  .arrow { color:var(--accent); font-size:20px; margin:6px 0; }
+  .box { border:1.5px dashed var(--line); border-radius:12px; padding:12px 14px; font-size:15px; }
+  ul { margin:14px 0 0; padding-left:20px; font-size:15px; } li { margin:4px 0; }
+</style>
+</head>
+<body>
+<section class="fig" id="pipeline">
+  <h1>Deterministic code-switching TTS: English with Hebrew words</h1>
+  <p class="sub">Example: a <b>My Weird Prompts</b> podcast script. One sentence, six stages, one voice.</p>
+  <div class="row">
+    <div class="st"><span class="n">1 · Script</span><span class="name">Code-switched script</span><span class="what">An LLM script agent writes English; Hebrew arrives in Latin letters.</span>
+      <div class="io">I need to go to Bituach Leumi before the makolet closes.</div><span class="status s-code">Input</span></div>
+    <div class="st key"><span class="n">2 · Detect</span><span class="name">Hebrew-Latin Token Classifier</span><span class="what">Finds each Hebrew span, with character offsets.</span>
+      <div class="io">I need to go to <mark>Bituach Leumi</mark> before the <mark>makolet</mark> closes.</div><span class="status s-built">Built · Hebrish</span></div>
+    <div class="st"><span class="n">3 · Transliterate</span><span class="name">Lexicon, then TaatikNet</span><span class="what">Romanized Hebrew to Hebrew script, word by word.</span>
+      <div class="io">Bituach Leumi →<br><span class="he" dir="rtl" lang="he">ביטוח לאומי</span><br>makolet →<br><span class="he" dir="rtl" lang="he">מכולת</span></div><span class="status s-exists">Existing model + lexicon</span></div>
+    <div class="st"><span class="n">4 · Niqqud</span><span class="name">Diacritizer</span><span class="what">Adds vowel points, so the voice knows how to say it. (TaatikNet output is already pointed.)</span>
+      <div class="io"><span class="he" dir="rtl" lang="he">בִּטּוּחַ לְאֻמִּי</span><br><span class="he" dir="rtl" lang="he">מַכֹּלֶת</span></div><span class="status s-exists">Existing model (DICTA)</span></div>
+    <div class="st"><span class="n">5 · Tag</span><span class="name">Segment + language tags</span><span class="what">Plain code. Split at every switch, tag each piece.</span>
+      <div class="io"><span class="tag en">en</span> I need to go to<br><span class="tag">he</span> <span class="he" dir="rtl" lang="he">בִּטּוּחַ לְאֻמִּי</span><br><span class="tag en">en</span> before the<br><span class="tag">he</span> <span class="he" dir="rtl" lang="he">מַכֹּלֶת</span><br><span class="tag en">en</span> closes.</div><span class="status s-code">Deterministic code</span></div>
+    <div class="st out"><span class="n">6 · Speak</span><span class="name">TTS with a language parameter</span><span class="what">Each segment voiced with the same voice prompt and its own language; clips joined.</span>
+      <div class="io">Chatterbox: language_id="en" | "he" per call<br>Azure multilingual voice: &lt;lang xml:lang="he-IL"&gt;</div><span class="status">Existing TTS</span></div>
+  </div>
+  <p class="legend">Only stage 2 is a Hebrish model. Stages 3, 4 and 6 use existing open models; 5 is string work. Not yet packaged as one service.</p>
+</section>
+
+<section class="fig" id="compare">
+  <h1>Two ways to voice a code-switched sentence</h1>
+  <p class="sub">The same input, two architectures.</p>
+  <div class="cols">
+    <div class="col good"><h2>Deterministic code-switching TTS</h2>
+      <div class="segs">
+        <div class="seg"><small>en</small>I need to go to</div>
+        <div class="seg h"><small>he</small><span class="he" dir="rtl" lang="he">בִּטּוּחַ לְאֻמִּי</span></div>
+        <div class="seg"><small>en</small>before the</div>
+        <div class="seg h"><small>he</small><span class="he" dir="rtl" lang="he">מַכֹּלֶת</span></div>
+        <div class="seg"><small>en</small>closes.</div>
+      </div>
+      <div class="arrow">↓ one call per segment, same voice, language set per call ↓</div>
+      <div class="box">Clips joined with short padding → one sentence of audio</div>
+      <ul><li>Explicit spans: you can see and test what was detected</li><li>Hebrew reaches the voice in Hebrew script, with niqqud</li><li>Fails safe: a missed word is read as English, as today</li><li>Cost: a split, an extra call and an audio seam per Hebrew span</li></ul>
+    </div>
+    <div class="col"><h2>A multilingual model switching mid-sentence</h2>
+      <div class="segs"><div class="seg" style="flex:1"><small>one input</small>I need to go to Bituach Leumi before the makolet closes.</div></div>
+      <div class="arrow">↓ one call ↓</div>
+      <div class="box">The model decides, word by word, which language it is reading</div>
+      <ul><li>No seams, one call</li><li>Romanized Hebrew is Latin script, so it looks like English to the model</li><li>No handle to fix one word, and no way to test what it decided</li><li>Needs a model trained on code-switched speech; few exist for Hebrew</li></ul>
+    </div>
+  </div>
+</section>
+<script>document.getElementById((location.hash || '#pipeline').slice(1)).classList.add('on');</script>
+</body>
+</html>

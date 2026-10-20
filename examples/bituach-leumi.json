@@ -1,0 +1,45 @@
+{
+  "text": "I need to go to Bituach Leumi before the makolet closes.",
+  "spans": [
+    {
+      "start": 16,
+      "end": 29,
+      "surface": "Bituach Leumi",
+      "score": 0.998,
+      "hebrew": "ביטוח לאומי",
+      "source": "lexicon",
+      "pointed": "בִּטּוּחַ לְאֻמִּי"
+    },
+    {
+      "start": 41,
+      "end": 48,
+      "surface": "makolet",
+      "score": 0.999,
+      "hebrew": "מכולת",
+      "source": "lexicon",
+      "pointed": "מַכֹּלֶת"
+    }
+  ],
+  "segments": [
+    {
+      "text": "I need to go to ",
+      "lang": "en"
+    },
+    {
+      "text": "בִּטּוּחַ לְאֻמִּי",
+      "lang": "he"
+    },
+    {
+      "text": " before the ",
+      "lang": "en"
+    },
+    {
+      "text": "מַכֹּלֶת",
+      "lang": "he"
+    },
+    {
+      "text": " closes.",
+      "lang": "en"
+    }
+  ]
+}

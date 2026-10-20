@@ -1,0 +1,45 @@
+{
+  "text": "We spent Shabbat with the mishpacha and the kids ate bamba all afternoon.",
+  "spans": [
+    {
+      "start": 26,
+      "end": 35,
+      "surface": "mishpacha",
+      "score": 0.998,
+      "hebrew": "מִשְׁפָּחָה",
+      "source": "taatiknet",
+      "pointed": "מִשְׁפָּחָה"
+    },
+    {
+      "start": 53,
+      "end": 58,
+      "surface": "bamba",
+      "score": 0.993,
+      "hebrew": "בַּמְבָּה",
+      "source": "taatiknet",
+      "pointed": "בַּמְבָּה"
+    }
+  ],
+  "segments": [
+    {
+      "text": "We spent Shabbat with the ",
+      "lang": "en"
+    },
+    {
+      "text": "מִשְׁפָּחָה",
+      "lang": "he"
+    },
+    {
+      "text": " and the kids ate ",
+      "lang": "en"
+    },
+    {
+      "text": "בַּמְבָּה",
+      "lang": "he"
+    },
+    {
+      "text": " all afternoon.",
+      "lang": "en"
+    }
+  ]
+}
