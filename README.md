@@ -8,7 +8,8 @@ stack: what each stage does, which model does it, how the stages hand data to ea
 working code for everything before the TTS call.
 
 **White paper (PDF):** [`whitepaper/code-switching-tts-pipeline.pdf`](whitepaper/code-switching-tts-pipeline.pdf),
-also at <https://hebrish.app/whitepaper/code-switching-tts-pipeline.pdf>.
+also at <https://hebrish.app/whitepaper/code-switching-tts-pipeline.pdf>. Its source is now
+`Hebrish-App/whitepaper/code-switching-tts-pipeline.typ` (Hebrish house style, 2026-11-02).
 
 > **Status (2026-10-20): a documented pipeline, not a packaged service.** Stages 2 to 5 run
 > end to end on CPU (`pipeline/text_stages.py`; outputs in [`examples/`](examples/)). The TTS stage
@@ -112,7 +113,7 @@ precision: a missed word only gives today's behaviour.
 | `pipeline/ssml_azure.py` | Stage 6 as Azure SSML |
 | `examples/*.json` | Real stage 2-5 output for three sentences |
 | `docs/pipeline.md` | Every component, the alternatives, engine facts and traps, with sources |
-| `whitepaper/` | The white paper: HTML source and PDF |
+| `whitepaper/` | The white paper PDF, plus the original HTML (superseded: the source is now `Hebrish-App/whitepaper/code-switching-tts-pipeline.typ`, house style, 2026-11-02) |
 | `figures/` | `hero.png` (generated illustration, no text but labels), `pipeline.png` and `compare.png` (rendered from `figures/src/diagrams.html`, exact text) |
 
 ## Related
